@@ -1,0 +1,27 @@
+<div *ngIf="isFetching" class="alert alert-secondary">Loading data, please wait...</div>
+<ejs-grid id="incidentGrid" #incidentGrid width="100%"
+    [dataSource]="incidents" [allowPaging]="true" [allowSorting]="true" [allowFiltering]="true" [pageSettings]="pageSettings" [filterSettings]='filterOptions' 
+    (rowSelected)="rowSelected($event)">
+    <e-columns>
+        <e-column field='color' headerText='Color' width="120">
+            <ng-template #template let-data>
+                <div class="color-container" [ngStyle]="{'background-color': data.color}">
+                    &nbsp;
+                </div>
+              </ng-template>
+        </e-column>
+        <e-column field='name' headerText='Name'></e-column>
+        <e-column field='createdDate' headerText='Create Date'  type='date' format='dd/MM/yyyy'></e-column>
+        <e-column field='updatedDate' headerText='Last Update'  type='date' format='dd/MM/yyyy'></e-column>
+        <e-column field='updatedBy' headerText='Created By'></e-column>
+        <e-column field='id' headerText='Actions' textAlign='Left' allowFiltering="false" width="160">
+            <ng-template #template let-data>
+                <div class="d-flex">
+                   <a href="javascript:void(0)" (click)=viewDetails(data)>VIEW</a>
+                    &nbsp; | &nbsp;
+                    <a href="javascript:void(0)" (click)=delete(data)>DELETE</a>
+                </div>
+            </ng-template>
+          </e-column>
+    </e-columns>
+</ejs-grid>

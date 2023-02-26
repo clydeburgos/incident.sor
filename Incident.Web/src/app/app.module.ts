@@ -11,13 +11,15 @@ import { AppComponent } from './app.component';
 import { IncidentListComponent } from './components/incidents/incident-list/incident-list.component';
 import { IncidentManagementComponent } from './components/incidents/incident-management/incident-management.component';
 import { ShellComponent } from './components/shell/shell.component';
+import { IncidentCardComponent } from './components/incidents/incident-card/incident-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IncidentListComponent,
     IncidentManagementComponent,
-    ShellComponent
+    ShellComponent,
+    IncidentCardComponent
   ],
   imports: [
     BrowserModule,

@@ -22,6 +22,7 @@
     "@popperjs/core": "^2.11.6",
     "@syncfusion/ej2-angular-grids": "^20.4.51",
     "@syncfusion/ej2-angular-inputs": "^20.4.51",
+    "@syncfusion/ej2-angular-layouts": "^20.4.48-ngcc",
     "@syncfusion/ej2-angular-popups": "^20.4.51-ngcc",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",

@@ -1,0 +1,15 @@
+
+<div class="d-flex">
+    <div class="e-card m-3" *ngFor="let data of incidents">
+        <div class="e-card-image d-flex justify-content-center align-items-center">
+            <div class="color-container" [ngStyle]="{'background-color': data.color}">
+                &nbsp;
+            </div>
+        </div>
+        <div class="e-card-title">{{data.name}}</div>
+    </div>
+</div>
+
+
+
+

@@ -1,5 +1,6 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { IncidentCardComponent } from '../incidents/incident-card/incident-card.component';
 import { IncidentListComponent } from '../incidents/incident-list/incident-list.component';
 import { IncidentManagementComponent } from '../incidents/incident-management/incident-management.component';
 
@@ -10,8 +11,11 @@ import { IncidentManagementComponent } from '../incidents/incident-management/in
 })
 export class ShellComponent implements OnInit {
   @ViewChild('incidentList') incidentList: IncidentListComponent;
+  @ViewChild('incidentCards') incidentCards: IncidentCardComponent;
+
+  viewMode: number = 0; //0 = list, 1 = card
   searchInput: string = '';
-  constructor(private modalService: NgbModal) {
+  constructor(private modalService: NgbModal, private changeDetection: ChangeDetectorRef) {
 
   }
   ngOnInit() {
@@ -35,6 +39,15 @@ export class ShellComponent implements OnInit {
   }
 
   search(){
-    this.incidentList.getIncidents();
+    if(this.viewMode === 0) {
+      this.incidentList.getIncidents();
+    } else {
+      this.incidentCards.getIncidents();
+    }
+  }
+
+  toggleViewMode(viewMode: number){
+    this.viewMode = viewMode;
+    this.changeDetection.detectChanges();
   }
 }

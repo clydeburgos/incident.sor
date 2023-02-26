@@ -39,5 +39,13 @@ View mode support (Tile / List)
 
 Deployed on Cloud (additional)
 
+## If give more time, what could have I improved?
 
+Currently, it doesnt track the person who's updating the records, ideally, it would have been good to save the identity, via Asp.net Identity, and have
+an authentication process to save the updatedBy record.
 
+That said, could have added a security layer, securing the API by token.
+
+Also, add logging properly.
+
+Additional Code Clean up

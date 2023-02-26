@@ -1,7 +1,7 @@
 <div class="container mt-5">
     <div class="form-group d-flex pb-3">
-        <input type="search" class="form-control w-50" /> &nbsp;
-        <button type="button" class="btn btn-primary">Go</button>
+        <input type="search" class="form-control w-50" [(ngModel)]="searchInput"  /> &nbsp;
+        <button type="button" class="btn btn-primary" (click)="search()">Go</button>
     </div>
     
     <div class="d-flex justify-content-between">
@@ -15,5 +15,7 @@
             <h3><a href="javascript:void(0)" (click)="open()"><i class="bi bi-plus-circle-fill"></i></a></h3>
         </div>
     </div>
-    <app-incident-list #incidentList (showDetailIncidentEmit)="showDetailIncidentEmit($event)"></app-incident-list>
+    <app-incident-list #incidentList 
+    [searchInput]="searchInput"
+    (showDetailIncidentEmit)="showDetailIncidentEmit($event)"></app-incident-list>
 </div>

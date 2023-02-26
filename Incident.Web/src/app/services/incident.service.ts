@@ -18,6 +18,10 @@ export class IncidentService {
     return this.http.get<any>(`${ environment.apiUrl }${ INCIDENT_ALL_URL }`);
   }
 
+  getMany(filter: string){
+    return this.http.get<any>(`${ environment.apiUrl }${ INCIDENT_ALL_URL }?search=${filter}`);
+  }
+
   get(id: string): Observable<IncidentDto> {
     return this.http.get<IncidentDto>(`${ environment.apiUrl }${ INCIDENT_GET_URL }/${ id }`);
   }

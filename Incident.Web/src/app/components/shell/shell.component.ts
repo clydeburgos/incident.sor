@@ -10,6 +10,7 @@ import { IncidentManagementComponent } from '../incidents/incident-management/in
 })
 export class ShellComponent implements OnInit {
   @ViewChild('incidentList') incidentList: IncidentListComponent;
+  searchInput: string = '';
   constructor(private modalService: NgbModal) {
 
   }
@@ -31,5 +32,9 @@ export class ShellComponent implements OnInit {
     if(data) {
       this.open(data);
     } 
+  }
+
+  search(){
+    this.incidentList.getIncidents();
   }
 }

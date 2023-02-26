@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { DataStateChangeEventArgs, GridComponent, PageSettingsModel } from '@syncfusion/ej2-angular-grids';
 import { BehaviorSubject, tap } from 'rxjs';
 import { IncidentDto } from 'src/app/dtos/incident.dto';
@@ -21,6 +21,7 @@ export class IncidentListComponent implements OnInit{
 
   public selectedRowData: any;
   @ViewChild('incidentGrid', { static : false }) public grid: GridComponent;
+  @Input() searchInput: string;
   @Output() showDetailIncidentEmit = new EventEmitter();
   
   public pageSettings: PageSettingsModel = { pageSize: 20, pageSizes: true };
@@ -35,9 +36,10 @@ export class IncidentListComponent implements OnInit{
     this.getIncidents();
   }
 
-  getIncidents(searched: boolean = false){
+  getIncidents(){
     this.isFetching = true;
-    this.incidentService.getAll().subscribe((data) => {
+    const service = this.searchInput ? this.incidentService.getMany(this.searchInput) : this.incidentService.getAll();
+    service.subscribe((data) => {
       this.incidents = data;
     }, (error: any) => {
       console.log(error);

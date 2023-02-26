@@ -24,10 +24,20 @@ namespace Incident.SOR.API.Controllers
         }
 
         [HttpGet("many")]
-        public async Task<IActionResult> GetManyAsync()
+        public async Task<IActionResult> GetManyAsync(string ? search)
         {
-            var data = await repository.GetManyAsync();
-            return Ok(data);
+            if (!string.IsNullOrEmpty(search))
+            {
+                var data = await repository.GetManyAsync(new FilterRequestDto() { 
+                    SearchValue = search
+                });
+                return Ok(data);
+            }
+            else 
+            {
+                var data = await repository.GetManyAsync();
+                return Ok(data);
+            }
         }
 
         [HttpPost("add")]

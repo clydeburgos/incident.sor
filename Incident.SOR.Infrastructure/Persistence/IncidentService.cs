@@ -81,6 +81,9 @@ namespace Incident.SOR.Infrastructure.Persistence
         public async Task<IEnumerable<IncidentDto>> GetManyAsync(FilterRequestDto filterRequest)
         {
             string baseQuery = $"SELECT {SqlHelper.GenerateColumnsSelectQuery(new IncidentDto())} FROM Incident WITH (NOLOCK)";
+            if (filterRequest.SearchValue != null) {
+                baseQuery += $" WHERE Name LIKE '%{filterRequest.SearchValue}%'";
+            }
             return await dataAccess.QueryListAsync<IncidentDto>(baseQuery, null, System.Data.CommandType.Text);
         }
 

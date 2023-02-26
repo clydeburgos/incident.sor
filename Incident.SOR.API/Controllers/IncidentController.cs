@@ -31,9 +31,16 @@ namespace Incident.SOR.API.Controllers
         }
 
         [HttpPost("add")]
-        public async Task<IActionResult> AddAsync(IncidentDto record)
+        public async Task<IActionResult> AddAsync(IncidentAddRequestDto record)
         {
-            var data = await repository.AddAsync(record);
+            var incidentRecord = new IncidentDto()
+            {
+                Name = record.Name,
+                Color = record.Color,
+                Description = record.Description,
+                UpdatedBy = string.IsNullOrEmpty(record.UpdatedBy) ? "System" : record.UpdatedBy
+            };
+            var data = await repository.AddAsync(incidentRecord);
             return Ok(data);
         }
 

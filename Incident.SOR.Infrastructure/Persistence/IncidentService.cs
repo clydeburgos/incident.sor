@@ -4,7 +4,6 @@ using Incident.SOR.Core.Persistence;
 using Incident.SOR.Core.Utility;
 using Incident.SOR.Domain.DTO;
 using Incident.SOR.Domain.DTO.Request;
-using static Slapper.AutoMapper;
 
 
 namespace Incident.SOR.Infrastructure.Persistence

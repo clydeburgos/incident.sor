@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://customer-sor.azurewebsites.net'
+    apiUrl: 'https://incident-api.azurewebsites.net'
   };
   

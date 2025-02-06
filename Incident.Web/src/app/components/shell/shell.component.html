@@ -11,7 +11,7 @@
     </div>
     <div class="form-group d-flex pb-3">
         <input type="search" class="form-control w-90" [(ngModel)]="searchInput" placeholder="Find by name..." /> &nbsp;
-        <button type="button" class="btn btn-primary" (click)="search()">Go</button>
+        <button type="button" class="btn btn-danger" (click)="search()">Go</button>
     </div>
     <app-incident-list #incidentList *ngIf="viewMode === 0"
     [searchInput]="searchInput"
